@@ -1,0 +1,301 @@
+/* Importa as fontes do Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+
+/* Reset básico para todos os elementos */
+* {
+    font-family: "Instrument Sans", sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilos para o corpo da página */
+body {
+    margin: 0;
+    font-family: Roboto, sans-serif; 
+    background-color: #F6F6F6;
+    min-height: 100vh; 
+    overflow-x: hidden; 
+    overflow-y: auto;   /* Permite scroll vertical em todo o corpo da página */
+}
+
+/* Estilos para a barra de navegação lateral (copiado de licencas.css) */
+nav {
+    width: 150px;
+    background-color: white;
+    border-radius: 20px;
+    padding: 20px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    box-sizing: border-box;
+    flex-shrink: 0; 
+    box-shadow: 2px 0 5px rgba(0,0,0,0.05); 
+    
+    position: fixed; 
+    height: 100vh;   
+    top: 0;          
+    left: 0;         
+    z-index: 1000;   
+    overflow-y: auto; 
+}
+
+nav .nav-item a {
+    padding: 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #7D7D7D;
+    transition: 0.2s ease;
+}
+
+nav .nav-item a:hover {
+    background-color: #454545;
+    color: #fff;
+}
+
+nav img {
+    width: 100px;
+    height: 100px;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.nav-item img {
+    width: 27px;
+    height: 27px;
+}
+
+.nav-item span {
+    color: #7D7D7D;
+    font-size: 16px;
+}
+
+.nav-item:nth-child(3) img, 
+.nav-item:nth-child(4) img, 
+.nav-item:nth-child(5) img { 
+    width: 23px;
+    height: 23px;
+}
+
+/* Estilos para o conteúdo principal */
+main {
+    padding: 20px;
+    margin-left: 150px; /* Largura da nav */
+}
+
+/* Estilos para a saudação */
+.greeting {
+    margin-bottom: 20px;
+}
+
+.greeting span,
+.greeting b { 
+    font-size: 16px;
+    color: black;
+}
+
+/* Estilos para a seção principal de card do formulário */
+.section-card {
+    background-color: white;
+    border-radius: 6px;
+    padding: 36px 20px; /* Padding ajustado */
+    box-sizing: border-box;
+    margin-bottom: 20px; 
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05); 
+}
+
+.section-card h2 {
+    margin: 0;
+    font-size: 20px;
+    color: #667085;
+}
+
+.section-card p {
+    margin: 10px 0 20px 0;
+    font-size: 14px;
+    color: #667085;
+    font-weight: 300;
+}
+
+/* Estilos para a tag "4 Módulos" */
+.module-info { /* Renomeei de .tag para .module-info para ser mais específico */
+    background-color: rgba(240, 128, 25, 0.05); 
+    border-radius: 6px;
+    padding: 5px 8px;
+    display: inline-block; 
+    margin-bottom: 20px; /* Espaçamento abaixo da tag */
+}
+
+.module-info span {
+    color: #454545;
+    font-size: 14px;
+    font-family: Inter, sans-serif; 
+}
+
+
+/* --- Estilos do Formulário de Cadastro de Licença --- */
+.licenca-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Espaçamento entre os grupos de input */
+    margin-top: 30px; /* Espaçamento do título da seção */
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px; /* Espaçamento entre label e input/opções */
+}
+
+.input-label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #344054;
+}
+
+.input-field,
+.input-field-file { /* Estilos para os campos de input e o campo de arquivo */
+    padding: 10px 14px;
+    font-size: 14px;
+    border: 1px solid #D0D5DD;
+    border-radius: 6px;
+    background: white;
+    color: #667085;
+    outline: none;
+    width: 100%; /* Ocupa a largura total disponível */
+}
+
+/* Estilo específico para input de tipo date */
+input[type="date"] {
+    /* Alguns navegadores podem precisar de estilos adicionais para o placeholder ou ícone */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: white url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="%23667085" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>') no-repeat right 10px center;
+    background-size: 16px;
+    cursor: pointer;
+}
+input[type="date"]::-webkit-calendar-picker-indicator {
+    opacity: 0; /* Esconde o ícone padrão do calendário em WebKit */
+    position: absolute; /* Para que o clique ainda funcione */
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+small {
+    font-size: 12px;
+    color: #667085;
+    margin-top: 4px;
+}
+
+.notification-options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Espaçamento entre as opções de rádio */
+}
+
+.notification-option {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #454545;
+}
+
+.notification-option input[type="radio"] {
+    /* Estilização básica para o checkbox (opcional, pode ser mais avançado) */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    border: 1px solid #D0D5DD;
+    border-radius: 50%; /* Faz um círculo para radio */
+    background-color: white;
+    transition: all 0.2s ease;
+    flex-shrink: 0; /* Impede que o radio button encolha */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.notification-option input[type="radio"]:checked {
+    background-color: #9D6A5E; /* Cor de fundo quando selecionado */
+    border-color: #9D6A5E;
+}
+
+.notification-option input[type="radio"]:checked::after {
+    content: '';
+    width: 8px;
+    height: 8px;
+    background-color: white;
+    border-radius: 50%;
+    display: block;
+}
+
+.notification-option input[type="radio"]:focus {
+    outline: 2px solid #8c5b4e; /* Anel de foco acessível */
+    outline-offset: 2px;
+}
+
+
+/* Botões de Ação do Formulário (SALVAR e CANCELAR) */
+.form-actions {
+    display: flex;
+    justify-content: flex-end; /* Alinha os botões à direita */
+    gap: 15px; /* Espaçamento entre os botões */
+    margin-top: 30px; /* Espaçamento acima dos botões */
+}
+
+.btn-salvar,
+.btn-cancelar {
+    padding: 10px 24px;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.btn-salvar {
+    background: #9D6A5E; /* Cor marrom principal */
+    color: white;
+}
+
+.btn-salvar:hover {
+    background-color: #8c5b4e;
+}
+
+.btn-cancelar {
+    background: #F6F6F6; /* Fundo cinza claro */
+    color: #667085; /* Cor do texto cinza escuro */
+    border: 1px solid #D0D5DD; /* Borda suave */
+}
+
+.btn-cancelar:hover {
+    background-color: #e0e0e0;
+}
+
+/* Estilo para o item de logout na navegação (copiado de licencas.css) */
+.logout {
+    margin-top: auto; 
+    padding-top: 20px; 
+    border-top: 1px solid #eee; 
+    width: 100%; 
+    text-align: center;
+}
+
+main section:last-child {
+    margin-bottom: 50px; 
+}

@@ -1,0 +1,366 @@
+/* Importa as fontes do Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+
+/* Reset básico para todos os elementos */
+* {
+    font-family: "Instrument Sans", sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilos para o corpo da página */
+body {
+    margin: 0;
+    font-family: Roboto, sans-serif; 
+    background-color: #F6F6F6;
+    min-height: 100vh; 
+    overflow-x: hidden; 
+    overflow-y: auto;   /* PERMITE SCROLL VERTICAL EM TODO O CORPO DA PÁGINA */
+}
+
+/* Estilos para a barra de navegação lateral */
+nav {
+    width: 150px;
+    background-color: white;
+    border-radius: 20px;
+    padding: 20px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    box-sizing: border-box;
+    flex-shrink: 0; 
+    box-shadow: 2px 0 5px rgba(0,0,0,0.05); 
+    
+    /* PROPRIEDADES PARA TORNAR A NAV FIXA */
+    position: fixed; 
+    height: 100vh;   
+    top: 0;          
+    left: 0;         
+    z-index: 1000;   
+    overflow-y: auto; 
+}
+
+nav .nav-item a {
+    padding: 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #7D7D7D;
+    transition: 0.2s ease;
+}
+
+nav .nav-item a:hover {
+    background-color: #454545;
+    color: #fff;
+}
+
+nav img {
+    width: 100px;
+    height: 100px;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.nav-item img {
+    width: 27px;
+    height: 27px;
+}
+
+.nav-item span {
+    color: #7D7D7D;
+    font-size: 16px;
+}
+
+.nav-item:nth-child(3) img, 
+.nav-item:nth-child(4) img, 
+.nav-item:nth-child(5) img { 
+    width: 23px;
+    height: 23px;
+}
+
+/* Estilos para o conteúdo principal */
+main {
+    padding: 20px;
+    margin-left: 150px; /* Largura da nav */
+}
+
+/* Estilos para a saudação */
+.greeting {
+    margin-bottom: 20px;
+}
+
+.greeting span,
+.greeting b { 
+    font-size: 16px;
+    color: black;
+}
+
+/* Estilos para as seções de card (cabeçalho da página e filtros/tabela) */
+.section-card {
+    background-color: white;
+    border-radius: 6px;
+    padding: 36px 20px 20px 20px;
+    box-sizing: border-box;
+    margin-bottom: 20px; 
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05); 
+}
+
+.section-card h2 {
+    margin: 0;
+    font-size: 20px;
+    color: #667085;
+}
+
+.section-card p {
+    margin: 10px 0 20px 0;
+    font-size: 14px;
+    color: #667085;
+    font-weight: 300;
+}
+
+/* Estilos para a tag "X Licenças" */
+.tag {
+    background-color: rgba(240, 128, 25, 0.05); 
+    border-radius: 6px;
+    padding: 5px 8px;
+    display: inline-block; 
+    margin-bottom: 20px; 
+}
+
+.tag span {
+    color: #454545;
+    font-size: 14px;
+    font-family: Inter, sans-serif; 
+}
+
+/* Estilo para o botão "Cadastrar Nova Licença" (topo da página) */
+.btn-cadastrar-licenca { 
+    margin: 20px 0; 
+}
+.btn-cadastrar-licenca a {
+    display: inline-block; 
+    padding: 10px 20px;
+    background: #9e7563; /* Cor marrom */
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    text-decoration: none; 
+    transition: background-color 0.2s ease;
+}
+
+.btn-cadastrar-licenca a:hover {
+    background-color: #8c5b4e; /* Marrom mais escuro no hover */
+}
+
+/* --- Estilos para a área de filtros --- */
+.filter-header {
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px; 
+    margin-bottom: 20px;
+    background-color: white; 
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05); 
+    flex-wrap: wrap; 
+}
+
+/* No seu licencas.css */
+
+.filter {
+    flex-grow: 1; 
+    max-width: 300px;
+    height: 40px;
+    padding: 0 16px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+    gap: 8px; 
+    background: white;
+    outline: 1px solid #D0D5DD; 
+    cursor: pointer;
+    position: relative;
+}
+
+
+
+/* Novo estilo para o wrapper do label e select */
+.filter-content-wrapper {
+    display: flex;
+    align-items: center;
+    flex-grow: 1; /* Permite que o wrapper ocupe o espaço restante */
+    gap: 5px; /* Espaçamento entre label e select */
+    position: relative; /* Para a seta do select */
+}
+
+
+.filter label {
+    color: #667085; 
+    font-size: 14px;
+    font-family: Inter, sans-serif;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.filter select {
+    flex-grow: 1;
+    border: none;
+    background: none;
+    outline: none;
+    font-size: 14px;
+    color: #454545;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    cursor: pointer;
+    padding-right: 20px; 
+}
+
+.dropdown-icon {
+    width: 20px;
+    height: 20px;
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+    pointer-events: none; /* Impede que o clique no ícone interfira no select subjacente */
+    /* Posiciona a seta customizada sobre onde a seta nativa estaria */
+    position: absolute;
+    right: 8px; /* Ajuste para o espaçamento do lado direito */
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.dropdown-icon div {
+    width: 0;
+    height: 0;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 4px solid #667085; /* Seta para baixo */
+}
+
+/* Estilo para o botão "Filtrar" */
+.btn-filtrar { 
+    padding: 10px 20px; 
+    background: #9e7563; 
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.btn-filtrar:hover {
+    background-color: #8c5b4e; 
+}
+
+
+/* --- Estilos da Tabela de Licenças --- */
+.table-header,
+.table-row {
+    display: flex; 
+    gap: 15px; 
+    padding: 12px 15px; 
+    border-bottom: 1px solid #EAECF0; 
+    color: #667085;
+    align-items: center; 
+}
+
+.table-header {
+    font-weight: bold;
+    padding-bottom: 12px; 
+    border-bottom: 2px solid #EAECF0; 
+    color: #344054; 
+    background-color: #f8f8f8; 
+    border-radius: 6px 6px 0 0; 
+}
+
+.table-row:last-child {
+    border-bottom: none; 
+}
+
+.table-row:hover {
+    background-color: #f5f5f5; 
+}
+
+.table-row div,
+.table-header div {
+    flex-shrink: 0; 
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+    padding: 5px 0; 
+}
+
+/* Larguras ajustadas para as colunas da tabela de licenças */
+.table-header div:nth-child(1), .table-row div:nth-child(1) { width: 200px; } /* Licença */
+.table-header div:nth-child(2), .table-row div:nth-child(2) { width: 100px; } /* Validade */
+.table-header div:nth-child(3), .table-row div:nth-child(3) { width: 140px; } /* Órgão */
+.table-header div:nth-child(4), .table-row div:nth-child(4) { width: 170px; } /* CNPJ */
+.table-header div:nth-child(5), .table-row div:nth-child(5) { width: 130px; } /* Notificação */
+.table-header div:nth-child(6), .table-row div:nth-child(6) { width: 60px; text-align: center; } /* Ações */
+
+
+/* Estilo para a div que indica "Nenhuma licença encontrada" */
+.table-row.no-data div {
+    grid-column: 1 / span 6; 
+    text-align: center;
+    padding: 20px;
+    width: auto; 
+}
+
+/* Estilos para os badges de notificação de validade */
+.notificacao-badge {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+    text-align: center;
+    width: 100%; 
+}
+
+.notificacao-badge.vencida {
+    background-color: #fee4e2; 
+    color: #b42318; 
+}
+
+.notificacao-badge.proximo-vencimento {
+    background-color: #fff4ed; 
+    color: #c4320a; 
+}
+
+.notificacao-badge.ativa {
+    background-color: #d1fadf; 
+    color: #037a5b; 
+}
+
+/* Estilo para o item de logout na navegação */
+.logout {
+    margin-top: auto; 
+    padding-top: 20px; 
+    border-top: 1px solid #eee; 
+    width: 100%; 
+    text-align: center;
+}
+
+main section:last-child {
+    margin-bottom: 50px; 
+}
+
+/* Estilo para o ícone de download */
+.table-row div a img { 
+    max-width: 20px; 
+    height: auto;
+    vertical-align: middle; 
+}

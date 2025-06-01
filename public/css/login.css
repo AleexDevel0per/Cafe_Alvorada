@@ -1,0 +1,202 @@
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap');
+
+* {
+    font-family: "Instrument Sans", sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #f0f0f0;
+    background-image: url('../img/background.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('../img/background.png') no-repeat center center fixed;
+    background-size: cover;
+    filter: brightness(0.4);
+    z-index: -1;
+}
+
+a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.container {
+    display: flex;
+    gap: 50px;
+    flex-wrap: wrap;
+    padding: 40px;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+
+.form {
+    width: 500px;
+}
+
+.card {
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 30px;
+    border-radius: 5px;
+}
+
+.card-top {
+    text-align: left;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-left: -40px;
+}
+
+.logo {
+    height: 100px;
+    margin-right: -18px;
+}
+
+.logo-text {
+    font-size: 25px;
+    font-weight: 200;
+}
+
+.title {
+    color: #9D6A5E;
+}
+
+.paragrafo {
+    font-weight: 100;
+    font-size: 18px;
+}
+
+span {
+    color: #EC7100;
+}
+
+.catchphrase-content {
+    width: 380px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+}
+
+.catchphrase {
+    font-size: 50px;
+    line-height: 1.4;
+}
+
+.container-card {
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+.card-group {
+    margin-top: 15px;
+}
+
+.card-group>label {
+    width: 100%;
+    display: block;
+}
+
+.card-group>input {
+    border-radius: 5px;
+    outline: 0;
+    width: 100%;
+    height: 50px;
+    padding: 20px;
+    border: 0px;
+}
+
+.card-group>button {
+    background-color: #9D6A5E;
+    color: #fff;
+    width: 100%;
+    height: 50px;
+    border: 0px;
+    border-radius: 10px;
+    font-weight: 500;
+    font-size: 18px;
+    transition: ease-in 0.1s;
+    margin-top: 15px;
+}
+
+.card-group>button:hover {
+    background-color: #ff7b00;
+    cursor: pointer;
+}
+
+.card-group>button:active {
+    background-color: #fe9d43;
+    cursor: pointer;
+}
+
+.checkbox-container input[type="checkbox"] {
+    display: none;
+}
+
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding-left: 25px;
+    cursor: pointer;
+    font-size: 18px;
+    color: #333;
+    user-select: none;
+}
+
+.checkbox-container .checkmark {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 20px;
+    width: 20px;
+    background-color: #eee;
+    border-radius: 5px;
+    border: 2px solid #959595;
+    transition: all 0.2s ease-in-out;
+}
+
+.checkbox-container input:checked+.checkmark {
+    background-color: #EC7100;
+    border-color: #EC7100;
+}
+
+.checkbox-container .checkmark::after {
+    content: "";
+    position: absolute;
+    display: none;
+    left: 6px;
+    top: 2px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+
+.checkbox-container input:checked+.checkmark::after {
+    display: block;
+}

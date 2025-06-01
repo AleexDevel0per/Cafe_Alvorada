@@ -1,0 +1,338 @@
+/* Importa a fonte Instrument Sans do Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap');
+
+/* Reset básico para todos os elementos */
+* {
+    font-family: "Instrument Sans", sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilos para o corpo da página */
+body {
+    margin: 0;
+    font-family: Roboto, sans-serif;
+    background-color: #F6F6F6;
+    /* REMOVIDO: display: flex; */
+    min-height: 100vh; 
+    overflow-x: hidden;
+    overflow-y: auto;   /* Permite scroll vertical em todo o corpo da página */
+}
+
+/* Estilos para a barra de navegação lateral */
+nav {
+    width: 150px;
+    background-color: white;
+    border-radius: 20px;
+    padding: 20px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    box-sizing: border-box;
+    flex-shrink: 0; 
+    box-shadow: 2px 0 5px rgba(0,0,0,0.05); 
+    
+    /* PROPRIEDADES PARA TORNAR A NAV FIXA */
+    position: fixed; 
+    height: 100vh;   
+    top: 0;          
+    left: 0;         
+    z-index: 1000;   
+    overflow-y: auto; /* Permite scroll interno se a nav for muito grande */
+}
+
+nav .nav-item a {
+    padding: 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #7D7D7D;
+    transition: 0.2s ease;
+}
+
+nav .nav-item a:hover {
+    background-color: #454545;
+    color: #fff;
+}
+
+nav img {
+    width: 100px;
+    height: 100px;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.nav-item img {
+    width: 27px;
+    height: 27px;
+}
+
+.nav-item span {
+    color: #7D7D7D;
+    font-size: 16px;
+}
+
+.nav-item:nth-child(3) img, 
+.nav-item:nth-child(4) img, 
+.nav-item:nth-child(5) img { 
+    width: 23px;
+    height: 23px;
+}
+
+/* Estilos para o conteúdo principal */
+main {
+    /* REMOVIDO: flex: 1; */
+    padding: 20px;
+    /* MARGEM ESQUERDA PARA COMPENSAR A LARGURA DA NAV FIXA */
+    margin-left: 150px; /* Largura da nav */
+}
+
+/* Estilos para a saudação */
+.greeting span,
+.greeting b { 
+    font-size: 16px;
+    color: black;
+}
+
+/* Estilos para a seção de contêiner (onde está o título, descrição e botão) */
+section.container {
+    background-color: white;
+    border-radius: 6px;
+    padding: 36px 20px 20px 20px;
+    box-sizing: border-box;
+    margin-bottom: 20px; 
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05); 
+}
+
+.container h2 {
+    margin: 0;
+    font-size: 20px;
+    color: #667085;
+}
+
+.container p {
+    margin: 10px 0 20px 0;
+    font-size: 14px;
+    color: #667085;
+    font-weight: 300;
+}
+
+/* Estilos para o badge "10 Clientes" */
+.badge {
+    background-color: rgba(240, 128, 25, 0.05); 
+    border-radius: 6px;
+    padding: 5px 8px;
+    display: inline-block; 
+}
+
+.badge span {
+    color: #454545;
+    font-size: 14px;
+    font-family: Inter, sans-serif; 
+}
+
+/* Estilo do botão "Novo Cliente" */
+.btn-novo-cliente {
+    margin: 40px 0 20px 0;
+    padding: 10px 20px;
+    background: #9e7563;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.btn-novo-cliente:hover {
+    background-color: #8c5b4e;
+}
+
+/* --- Estilos do Modal de Cadastro de Cliente --- */
+.popup-cliente-modal {
+    display: none; 
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.4);
+    justify-content: center; 
+    align-items: center; 
+    z-index: 999;
+}
+
+.popup-content {
+    width: 655px;
+    background: #F6F6F6;
+    border-radius: 8px;
+    padding: 32px 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    position: relative;
+    display: flex; 
+    flex-direction: column; 
+    gap: 16px; /* Espaçamento entre os itens internos do modal (incluindo inputs) */
+}
+
+.header-modal {
+    background: white;
+    border-radius: 6px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.header-modal > div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.modal-close-btn {
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.header-modal span:nth-child(2) {
+    font-size: 18px;
+    font-weight: 600;
+    color: #344054;
+}
+
+.header-modal span:last-child {
+    font-size: 14px;
+    font-weight: 400;
+    color: #667085;
+}
+
+/* Estilo para os inputs do modal */
+.modal-input {
+    padding: 10px 14px;
+    font-size: 14px;
+    border: 1px solid #D0D5DD;
+    border-radius: 6px;
+    background: white;
+    color: #667085;
+    outline: none;
+    width: 100%; /* Garante que os inputs ocupem a largura total do modal */
+    margin-top: 16px;
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 16px;
+}
+
+.btn-salvar {
+    padding: 10px 24px;
+    background: #9D6A5E;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.btn-salvar:hover {
+    background-color: #8c5b4e;
+}
+
+/* --- Estilos da Tabela de Clientes --- */
+.tabela {
+    background-color: white;
+    border-radius: 6px;
+    padding: 36px 20px 20px 20px;
+    box-sizing: border-box;
+    margin-top: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.tabela-header,
+.tabela-row {
+    display: flex;
+    gap: 80px;
+    padding: 10px 0;
+    border-bottom: 1px solid #EAECF0;
+}
+
+.tabela-header {
+    font-weight: bold;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #EAECF0;
+    color: #667085;
+}
+
+.tabela-row {
+    color: #667085;
+}
+
+.tabela-row:last-child {
+    border-bottom: none;
+}
+
+.tabela-row:hover {
+    background-color: #f5f5f5;
+}
+
+.tabela-row div,
+.tabela-header div {
+    width: 150px;
+    flex-shrink: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.tabela-header div:nth-child(2),
+.tabela-row div:nth-child(2) {
+    width: 120px;
+}
+
+.tabela-header div:nth-child(3),
+.tabela-row div:nth-child(3) {
+    width: 200px;
+}
+
+.tabela-header div:nth-child(4),
+.tabela-row div:nth-child(4) {
+    width: 140px;
+}
+
+.tabela-header div:nth-child(5),
+.tabela-row div:nth-child(5) {
+    width: 180px;
+}
+
+.tabela-header div:nth-child(6),
+.tabela-row div:nth-child(6) {
+    width: 100px;
+}
+
+.tabela-row.no-data div {
+    grid-column: 1 / span 6;
+    text-align: center;
+    padding: 20px;
+    width: auto;
+}
+
+.logout {
+    /* Usar margin-top: auto para empurrar o item para o final do flex container (nav) */
+    margin-top: auto; 
+    padding-top: 20px; /* Espaço acima do "Sair" */
+    border-top: 1px solid #eee; /* Separador visual */
+    width: 100%; /* Para centralizar o texto se desejar */
+    text-align: center; /* Centraliza o texto "Sair" */
+}
+
+main section:last-child {
+    margin-bottom: 50px; 
+}

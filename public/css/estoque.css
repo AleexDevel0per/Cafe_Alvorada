@@ -1,0 +1,479 @@
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+* {
+    font-family: "Instrument Sans", sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif; /* Usando Inter como padrão */
+    background-color: #F6F6F6;
+    /* Removendo display: flex e min-height: 100vh daqui, já que a nav será fixed e o main terá margin-left */
+    /* Deixe o body gerenciar o scroll naturalmente */
+}
+
+nav {
+    width: 150px;
+    background-color: white;
+    border-radius: 0 20px 20px 0; /* Ajustei o border-radius para ser apenas na direita, mais comum para sidebars fixas */
+    padding: 20px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    box-sizing: border-box;
+
+    /* PROPRIEDADES PARA FIXAR A NAVBAR */
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh; /* Ocupa a altura total da tela */
+    z-index: 100; /* Garante que fique acima do conteúdo */
+    /* FIM DAS PROPRIEDADES FIXAS */
+}
+
+nav .nav-item a {
+    padding: 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #7D7D7D;
+    transition: 0.2s ease;
+}
+
+nav .nav-item a:hover {
+    background-color: #454545;
+    color: #fff;
+}
+
+nav img {
+    width: 100px;
+    height: 100px;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.nav-item img {
+    width: 27px;
+    height: 27px;
+}
+
+.nav-item span {
+    color: #7D7D7D;
+    font-size: 16px;
+    font-family: 'Inter', sans-serif; /* Usando Inter para consistência */
+}
+
+.nav-item:nth-child(3) img,
+.nav-item:nth-child(4) img,
+.nav-item:nth-child(5) img {
+    width: 23px;
+    height: 23px;
+}
+
+main {
+    flex: 1;
+    padding: 30px;
+    /* ADICIONE ESTE MARGIN-LEFT PARA DAR ESPAÇO À NAVBAR FIXA */
+    margin-left: 150px; /* A largura da sua nav */
+    /* FIM DA ADIÇÃO */
+}
+
+.header {
+    margin-bottom: 30px;
+}
+
+.header h1 {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.header p {
+    font-size: 14px;
+    color: #777;
+    margin-bottom: 10px;
+}
+
+.produtos-count {
+    background-color: #EAEAEA;
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 14px;
+    color: #555;
+    margin-top: 5px;
+}
+
+.filtros {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.filtros select {
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+.filtros button {
+    padding: 8px 16px;
+    border-radius: 6px;
+    border: none;
+    background-color: #9D6A5E;
+    color: white;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.filtros button:hover {
+    background-color: #814d43;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden; /* Mantido aqui para o border-radius funcionar na tabela */
+}
+
+th,
+td {
+    padding: 12px;
+    text-align: left;
+    font-size: 14px;
+    border-bottom: 1px solid #eee;
+}
+
+th {
+    background-color: #f9f9f9;
+    color: #555;
+    font-weight: 500;
+}
+
+td {
+    color: #333;
+}
+
+.icone-mais { /* Este estilo não é mais usado, mas pode ser mantido ou removido */
+    color: #9D6A5E;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.logout {
+    margin-top: auto;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+    width: 100%;
+    text-align: center;
+}
+
+/* ESTILOS DOS MODAIS (MOVIDOS DE estoque.php E pedidos.php PARA AQUI) */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.4);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    width: 100%;
+    max-width: 600px; /* Max-width comum para os modais */
+    background: white;
+    border-radius: 12px;
+    padding: 24px;
+    box-sizing: border-box;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+.modal-content input,
+.modal-content select {
+    margin-bottom: 12px;
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid #d0d5dd;
+    border-radius: 6px;
+    font-size: 14px;
+    color: #667085;
+    box-sizing: border-box;
+}
+
+.modal-close-btn {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: #667085;
+}
+
+.modal-footer {
+    text-align: right;
+}
+
+.modal-button {
+    padding: 10px 24px;
+    background-color: #9d6a5e;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+/* Estilos específicos para o modal de entrada individual (que estava no estoque.php) */
+.modal-entrada-individual .modal-content {
+    background: #F6F6F6;
+    padding: 32px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 655px; /* Ajuste para o tamanho original */
+}
+
+.modal-entrada-individual .modal-header {
+    background: white;
+    border-radius: 6px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.modal-entrada-individual .modal-header div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.modal-entrada-individual .modal-header span:first-child {
+    font-size: 18px;
+    cursor: pointer;
+}
+.modal-entrada-individual input {
+    background: white;
+}
+
+/* Estilos específicos para o modal de edição (que estava no pedidos.php) */
+#popupEditarPedido {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.5); /* Fundo mais escuro */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+#popupEditarPedido .modal-content {
+    width: 655px; /* Tamanho ajustado para este modal específico */
+    background: #F6F6F6;
+    border-radius: 10px; /* Bordas mais arredondadas */
+    padding: 32px 25px; /* Mais padding */
+    box-shadow: 0 6px 20px rgba(0,0,0,0.2); /* Sombra mais pronunciada */
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 18px; /* Mais espaço entre os elementos do modal */
+}
+#popupEditarPedido .modal-header {
+    background: white;
+    border-radius: 8px; /* Bordas mais arredondadas */
+    padding: 18px; /* Mais padding */
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+#popupEditarPedido .modal-header .title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+#popupEditarPedido .modal-header .title span {
+    font-size: 20px; /* Ícone de voltar maior */
+    cursor: pointer;
+}
+#popupEditarPedido .modal-header h2 {
+    font-size: 20px; /* Título maior */
+    font-weight: 600;
+    color: #344054;
+    margin: 0;
+}
+#popupEditarPedido .modal-header p {
+    font-size: 15px; /* Subtítulo maior */
+    font-weight: 400;
+    color: #667085;
+    margin: 0;
+}
+#popupEditarPedido form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+#popupEditarPedido input, #popupEditarPedido select {
+    padding: 12px 16px; /* Mais padding nos inputs */
+    font-size: 15px; /* Fonte maior nos inputs */
+    border: 1px solid #D0D5DD;
+    border-radius: 7px;
+    background: white;
+    color: #495057;
+    outline: none;
+}
+#popupEditarPedido input::placeholder {
+    color: #ADB5BD;
+}
+#popupEditarPedido button[type="submit"] {
+    padding: 12px 28px; /* Mais padding */
+    background: #9D6A5E;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+#popupEditarPedido button[type="submit"]:hover {
+    background-color: #8C5B4F;
+}
+
+/* Estilos de layout que estavam em pedidos.php (no style inline) */
+body {
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+}
+.main {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.filter-bar {
+    background-color: white;
+    padding: 15px 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+.filter-bar select,
+.filter-bar input[type="date"],
+.filter-bar input[type="text"] {
+    padding: 8px 12px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+}
+.filter-bar button.btn {
+    background: #6c757d; /* Um cinza mais neutro para o filtrar */
+    transition: background-color 0.3s ease;
+}
+.filter-bar button.btn:hover {
+    background: #5a6268;
+}
+/* Estilos para os cards de pedido (que estavam em pedidos.php) */
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    padding-bottom: 50px;
+}
+
+.card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 30px;
+    background-color: white;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 220px;
+}
+
+.card p {
+    margin-bottom: 12px;
+    line-height: 1.6;
+}
+
+.card p strong {
+    color: #333;
+}
+
+.card .info-tag {
+    position: absolute;
+    background-color: #f0f0f0;
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-size: 0.9em;
+    color: #555;
+    white-space: nowrap;
+    z-index: 1;
+}
+
+.card .info-tag:first-of-type {
+    top: 25px;
+    right: 25px;
+}
+
+.card .info-tag:nth-of-type(2) {
+    top: 65px;
+    right: 25px;
+}
+
+.btn-edit {
+    padding: 10px 18px;
+    background: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+    font-size: 0.95em;
+    transition: background-color 0.3s ease;
+}
+
+.btn-edit:hover {
+    background-color: #218838;
+}
+
+.btn-delete {
+    padding: 10px 18px;
+    background: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.95em;
+    transition: background-color 0.3s ease;
+}
+
+.btn-delete:hover {
+    background-color: #c82333;
+}
