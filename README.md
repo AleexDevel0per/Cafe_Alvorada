@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="Public/logoalvorada.png" alt="Alvorada" width="200"/>
+  <img src="public/img/logo.png" alt="Alvorada" width="200"/>
 </p>
 
 <h1 align="center">Café Alvorada</h1>
