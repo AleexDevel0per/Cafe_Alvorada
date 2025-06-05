@@ -10,7 +10,7 @@ if (isset($_POST['salvar_licenca'])) {
     $cnpj = $mysqli->real_escape_string($_POST['cnpj']); // Supondo que você queira adicionar CNPJ aqui
     $data_validade = $mysqli->real_escape_string($_POST['data_validade']);
     $prazo_expiracao = $mysqli->real_escape_string($_POST['prazo_expiracao']);
-    
+
     $caminho_documento = null; // Variável para armazenar o caminho do arquivo
 
     // --- Lógica de Upload de Arquivo ---
@@ -25,7 +25,7 @@ if (isset($_POST['salvar_licenca'])) {
         }
 
         $caminho_documento = $diretorio_upload . uniqid() . '_' . $nome_arquivo; // Adiciona um ID único para evitar conflitos
-        
+
         if (move_uploaded_file($arquivo_tmp, $caminho_documento)) {
             // Arquivo movido com sucesso
         } else {
@@ -41,11 +41,10 @@ if (isset($_POST['salvar_licenca'])) {
 
         // Consulta SQL para inserir a nova licença
         // Inclui caminho_documento se o upload for parte da sua tabela licencas
-        // Se a sua tabela 'licencas' NÃO tiver uma coluna para o caminho do documento, remova 'caminho_documento' da query e da bind_param
         $sql_inserir = "INSERT INTO licencas (nome_licenca, cnpj, orgao_responsavel, data_validade, prazo_expiracao, caminho_documento) VALUES (?, ?, ?, ?, ?, ?)";
-        
+
         $stmt = $mysqli->prepare($sql_inserir);
-        
+
         if ($stmt === false) {
             die('Erro na preparação da query: ' . $mysqli->error);
         }
@@ -97,14 +96,14 @@ if (isset($_POST['salvar_licenca'])) {
                 <a href="clientes.php">Clientes</a>
             </span>
         </div>
-        
+
         <div class="nav-item">
             <img src="../public/icons/estoque.png" alt="Ícone Estoque" />
             <span>
                 <a href="estoque.php">Estoque</a>
             </span>
         </div>
-        
+
         <div class="nav-item">
             <img src="../public/icons/licenca.png" alt="Ícone Licenças" />
             <span>
@@ -112,7 +111,7 @@ if (isset($_POST['salvar_licenca'])) {
             </span>
         </div>
 
-        <div class="nav-item logout"> 
+        <div class="nav-item logout">
             <span>
                 <a href="../auth/logout.php">Sair</a>
             </span>
@@ -131,7 +130,7 @@ if (isset($_POST['salvar_licenca'])) {
             <div class="module-info">
                 <span>4 Módulos</span>
             </div>
-            
+
             <form action="" method="POST" enctype="multipart/form-data" class="licenca-form">
                 <div class="input-group">
                     <label for="nome_licenca" class="input-label">Nome da licença</label>
@@ -186,7 +185,7 @@ if (isset($_POST['salvar_licenca'])) {
                     <button type="button" class="btn-cancelar" onclick="window.location.href='licencas.php'">Cancelar</button>
                 </div>
             </form>
-            </section>
+        </section>
     </main>
 </body>
 

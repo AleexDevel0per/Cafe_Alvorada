@@ -324,6 +324,203 @@ section.container {
     width: auto;
 }
 
+/* --- NOVO/AJUSTADO: Estilo para a coluna de ações e botão de edição --- */
+.tabela-header div:last-child,
+.tabela-row .tabela-actions {
+    text-align: center; /* Centraliza o conteúdo da coluna Ações */
+}
+
+.tabela-actions .btn-editar {
+    background-color: #8c5b4e; /* Azul vibrante */
+    color: white;
+    border: none;
+    padding: 8px 12px; /* Aumenta um pouco o padding */
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.2s ease;
+    display: inline-flex; /* Para alinhar o ícone e o texto, se tivesse texto */
+    align-items: center;
+    justify-content: center;
+    width: 32px; /* Largura fixa para o botão do ícone */
+    height: 32px; /* Altura fixa para o botão do ícone */
+    padding: 0; /* Remove padding extra se for só ícone */
+}
+
+.tabela-actions .btn-editar:hover {
+    background-color: #0056b3; /* Azul mais escuro no hover */
+}
+
+/* Estilo para o ícone dentro do botão */
+.tabela-actions .btn-editar i {
+    font-size: 16px; /* Tamanho do ícone */
+}
+
+/* Se o seu .tabela usa grid, ajuste o grid-template-columns */
+/* Exemplo, se você tiver 6 colunas de dados + 1 de ações */
+/* O ajuste exato dependerá de como seu grid está configurado */
+.tabela-header, .tabela-row {
+    display: grid;
+    /* Exemplo: ajuste o 7 para o número total de colunas que você tem */
+    /* E os tamanhos das colunas conforme sua necessidade */
+    grid-template-columns: 2fr 1fr 2fr 1.5fr 1.5fr 1fr 0.5fr; /* Exemplo: ajuste essas frações */
+    gap: 10px;
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    align-items: center;
+}
+
+/* Certifique-se de que o modal de edição tenha o mesmo estilo de display flex */
+.popup-cliente-modal {
+    display: none; /* Inicia oculto */
+    position: fixed; /* Fixa na tela */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fundo semi-transparente */
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+    z-index: 1000; /* Garante que fique acima de outros elementos */
+}
+
+.popup-cliente-modal .popup-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    width: 90%;
+    box-sizing: border-box; /* Garante que padding e border sejam incluídos na largura */
+}
+
+/* Estilos para os inputs dentro do modal */
+.modal-input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Estilos para os botões do modal */
+.modal-buttons {
+    display: flex;
+    justify-content: flex-end; /* Alinha o botão "Salvar" à direita */
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.modal-buttons .btn-salvar {
+    background-color: #28a745; /* Cor verde para salvar */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.2s ease;
+}
+
+.modal-buttons .btn-salvar:hover {
+    background-color: #218838;
+}
+
+/* Estilo para o botão de fechar (←) */
+.header-modal .modal-close-btn {
+    font-size: 24px;
+    cursor: pointer;
+    margin-right: 15px; /* Espaçamento entre a seta e o título */
+    color: #667085;
+}
+
+.header-modal {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.header-modal > div {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px; /* Pequeno espaçamento entre o título e a descrição */
+}
+
+.header-modal > div span:nth-child(2) {
+    font-size: 20px;
+    font-weight: 600;
+    color: #344054;
+}
+
+.header-modal > span:nth-child(2) { /* A descrição "Cadastre o cliente" */
+    font-size: 14px;
+    color: #667085;
+    margin-left: 40px; /* Alinha com o texto do título */
+}
+
+/* Para o body não ter scroll quando o modal estiver aberto */
+body.no-scroll {
+    overflow: hidden;
+}
+
+/* NOVO: Estilo para o botão de exclusão */
+.btn-excluir {
+    background-color: #8c5b4e; /* Vermelho para indicar exclusão */
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+    margin-left: 5px; /* Espaçamento entre os botões */
+}
+
+.btn-excluir:hover {
+    background-color: #c82333;
+}
+
+/* NOVO: Estilos para o modal de confirmação de exclusão */
+.small-popup {
+    max-width: 400px; /* Largura menor para o modal de confirmação */
+    padding: 30px;
+}
+
+.btn-cancelar {
+    background-color: #6c757d; /* Cinza para cancelar */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    margin-right: 10px;
+}
+
+.btn-cancelar:hover {
+    background-color: #5a6268;
+}
+
+.btn-excluir-confirmar {
+    background-color: #dc3545; /* Vermelho para confirmar exclusão */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    text-decoration: none; /* Remover sublinhado do link */
+    display: inline-block; /* Para que o padding funcione */
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.btn-excluir-confirmar:hover {
+    background-color: #c82333;
+}
+
 .logout {
     /* Usar margin-top: auto para empurrar o item para o final do flex container (nav) */
     margin-top: auto; 

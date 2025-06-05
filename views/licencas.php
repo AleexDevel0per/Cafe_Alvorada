@@ -3,7 +3,7 @@
 // Inclui o script de proteção de autenticação
 include("../auth/protect.php");
 // Inclui o arquivo de conexão com o banco de dados
-include("../config/conexao.php"); 
+include("../config/conexao.php");
 
 // --- Lógica para buscar e filtrar as licenças ---
 $where_clauses = []; // Array para armazenar as condições WHERE
@@ -25,7 +25,8 @@ if (isset($_GET['filtro_cnpj']) && $_GET['filtro_cnpj'] !== '') {
 }
 
 // Constrói a query SQL base
-$sql_licencas = "SELECT licenca_id, nome_licenca, cnpj, orgao_responsavel, data_validade, prazo_expiracao FROM licencas";
+// ATENÇÃO: Adicionei 'caminho_documento' na sua SELECT para que o download funcione!
+$sql_licencas = "SELECT licenca_id, nome_licenca, cnpj, orgao_responsavel, data_validade, prazo_expiracao, caminho_documento FROM licencas";
 
 // Adiciona as cláusulas WHERE se houver filtros
 if (!empty($where_clauses)) {
@@ -92,14 +93,14 @@ if ($result_licencas) {
                 <a href="clientes.php">Clientes</a>
             </span>
         </div>
-        
+
         <div class="nav-item">
             <img src="../public/icons/estoque.png" alt="Ícone Estoque" />
             <span>
                 <a href="estoque.php">Estoque</a>
             </span>
         </div>
-        
+
         <div class="nav-item">
             <img src="../public/icons/licenca.png" alt="Ícone Licenças" />
             <span>
@@ -107,7 +108,7 @@ if ($result_licencas) {
             </span>
         </div>
 
-        <div class="nav-item logout"> 
+        <div class="nav-item logout">
             <span>
                 <a href="../auth/logout.php">Sair</a>
             </span>
@@ -133,10 +134,10 @@ if ($result_licencas) {
 
         <section>
             <div class="section-card">
-                <form action="licencas.php" method="GET"> 
+                <form action="licencas.php" method="GET">
                     <div class="filter-header">
                         <div class="filter">
-                            <div class="filter-content-wrapper"> 
+                            <div class="filter-content-wrapper">
                                 <label for="filtro_licenca">Licença</label>
                                 <select name="filtro_licenca" id="filtro_licenca" class="filter-select">
                                     <option value="">Todas</option>
@@ -158,7 +159,7 @@ if ($result_licencas) {
                             </div>
                         </div>
                         <div class="filter">
-                            <div class="filter-content-wrapper"> 
+                            <div class="filter-content-wrapper">
                                 <label for="filtro_cnpj">CNPJ</label>
                                 <select name="filtro_cnpj" id="filtro_cnpj" class="filter-select">
                                     <option value="">Todos</option>
@@ -201,14 +202,14 @@ if ($result_licencas) {
                         $intervalo = $hoje->diff($data_validade);
                         $dias_restantes = $intervalo->days;
                         $notificacao_status = 'N/A';
-                        $notificacao_class = ''; 
+                        $notificacao_class = '';
 
-                        $prazo_expiracao = (int)$licenca['prazo_expiracao']; 
+                        $prazo_expiracao = (int)$licenca['prazo_expiracao'];
 
                         if ($data_validade < $hoje) {
                             $notificacao_status = 'Vencida';
                             $notificacao_class = 'vencida';
-                        } elseif ($dias_restantes <= $prazo_expiracao && $data_validade > $hoje) { 
+                        } elseif ($dias_restantes <= $prazo_expiracao && $data_validade > $hoje) {
                             $notificacao_status = "Faltam {$dias_restantes} dias";
                             $notificacao_class = 'proximo-vencimento';
                         } else {
@@ -225,9 +226,12 @@ if ($result_licencas) {
                                 <span><?php echo htmlspecialchars($notificacao_status); ?></span>
                             </div>
                             <div>
-                                <a href="#" title="Baixar Licença">
-                                    <img src="../public/icons/download.png" alt="Baixar">
-                                </a>
+                                <?php if (!empty($licenca['caminho_documento'])) { ?>
+                                    <a href="download_licenca.php?id=<?php echo htmlspecialchars($licenca['licenca_id']); ?>" title="Baixar Licença">
+                                        <img src="../public/icons/download.png" alt="Baixar">
+                                    </a>
+                                <?php } else { ?>
+                                    <span>N/A</span> <?php } ?>
                             </div>
                         </div>
                         <?php
