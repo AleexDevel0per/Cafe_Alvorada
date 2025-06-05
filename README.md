@@ -1,3 +1,9 @@
+<p align="center">
+  <img src="public/img/logo.png" alt="Alvorada" width="200"/>
+</p>
+
+<h1 align="center">Café Alvorada</h1>
+
 # Desafios Operacionais e Soluções com ERP
 
 ## 🎯 Gestão de Estoque
@@ -20,11 +26,6 @@ A falta de controle sobre documentos fiscais e obrigações legais pode gerar mu
 **Problema:** Departamentos operam isolados, com dados fragmentados, gerando retrabalho e erros de comunicação.  
 **Solução:** Um ERP integra informações em tempo real, unificando dados de setores como, vendas, estoque e clientes, reduzindo inconsistências e aumentando a eficiência.
 
-<p align="center">
-  <img src="public/img/logo.png" alt="Alvorada" width="200"/>
-</p>
-
-<h1 align="center">Café Alvorada</h1>
 
 ## 👨‍💻 Colaboradores
 
