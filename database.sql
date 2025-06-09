@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Tempo de geração: 03/06/2025 às 00:11
+-- Tempo de geração: 09/06/2025 às 15:19
 -- Versão do servidor: 9.1.0
 -- Versão do PHP: 8.3.14
 
@@ -34,30 +34,17 @@ CREATE TABLE IF NOT EXISTS `clientes` (
   `email` varchar(100) DEFAULT NULL,
   `telefone` varchar(20) DEFAULT NULL,
   `cpf` varchar(14) DEFAULT NULL,
-  PRIMARY KEY (`cliente_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  PRIMARY KEY (`cliente_id`),
+  UNIQUE KEY `cpf` (`cpf`)
+) ENGINE=MyISAM AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Despejando dados para a tabela `clientes`
 --
 
 INSERT INTO `clientes` (`cliente_id`, `nome`, `email`, `telefone`, `cpf`) VALUES
-(1, 'Carlos Silva', 'carlos@email.com', '11999990001', '123.456.789-01'),
-(2, 'Ana Souza', 'ana@email.com', '11999990002', '123.456.789-02'),
-(3, 'Mariana Lima', 'mariana@email.com', '11999990003', '123.456.789-03'),
-(4, 'Felipe Costa', 'felipe@email.com', '11999990004', '123.456.789-04'),
-(5, 'Juliana Alves', 'juliana@email.com', '11999990005', '123.456.789-05'),
-(6, 'Roberto Dias', 'roberto@email.com', '11999990006', '123.456.789-06'),
-(7, 'Fernanda Castro', 'fernanda@email.com', '11999990007', '123.456.789-07'),
-(8, 'Bruno Martins', 'bruno@email.com', '11999990008', '123.456.789-08'),
-(9, 'Patrícia Gomes', 'patricia@email.com', '11999990009', '123.456.789-09'),
-(10, 'Ricardo Moreira', 'ricardo@email.com', '11999990010', '123.456.789-10'),
-(11, 'Amanda Barros', 'amanda@email.com', '11999990011', '123.456.789-11'),
-(12, 'Thiago Ferreira', 'thiago@email.com', '11999990012', '123.456.789-12'),
-(13, 'Isabela Mendes', 'isabela@email.com', '11999990013', '123.456.789-13'),
-(14, 'Luciana Ramos', 'luciana@email.com', '11999990014', '123.456.789-14'),
-(15, 'André Lopes', 'andre@email.com', '11999990015', '123.456.789-15'),
-(22, 'Usuário 01', 'user@user.com', '(11) 99999-9999', '123.123.123-12');
+(30, 'Alexandre', 'alexandre@gmail.com', '(11) 94983-5776', '123.456.789-02'),
+(12, 'Thiago Ferreira', 'thiago@email.com', '11999990012', '123.456.789-12');
 
 -- --------------------------------------------------------
 
@@ -74,24 +61,20 @@ CREATE TABLE IF NOT EXISTS `estoque` (
   `unidade_medida` varchar(20) DEFAULT NULL,
   `limite_alerta` int DEFAULT '0',
   PRIMARY KEY (`produto_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Despejando dados para a tabela `estoque`
 --
 
 INSERT INTO `estoque` (`produto_id`, `nome`, `quantidade`, `valor`, `unidade_medida`, `limite_alerta`) VALUES
-(1, 'Café Espresso', 100, 7.00, NULL, 0),
-(2, 'Cappuccino', 80, 9.50, NULL, 0),
-(3, 'Latte', 10, 20.00, NULL, 0),
-(4, 'Mocha', 60, 10.00, NULL, 0),
-(5, 'Chá Gelado', 50, 6.00, NULL, 0),
-(6, 'Bolo de Chocolate', 30, 12.00, NULL, 0),
-(7, 'Bolo de Cenoura', 25, 11.00, NULL, 0),
-(8, 'Croissant', 40, 8.00, NULL, 0),
-(9, 'Pão de Queijo', 100, 5.00, NULL, 0),
-(10, 'Torrada com Manteiga', 50, 4.50, NULL, 0),
-(16, 'Produto 01', 4, 30.00, '1', 10);
+(3, 'Latte', 10, 20.00, 'UND', 0),
+(4, 'Mocha', 60, 10.00, 'UND', 0),
+(5, 'Chá Gelado', 47, 6.00, 'UND', 0),
+(8, 'Croissant', 39, 8.00, 'UND', 0),
+(9, 'Pão de Queijo', 95, 5.00, 'UND', 0),
+(10, 'Torrada com Manteiga', 53, 4.50, 'UND', 0),
+(21, 'Bolacha de chocolate', 30, 4.50, 'UND', 49);
 
 -- --------------------------------------------------------
 
@@ -107,21 +90,24 @@ CREATE TABLE IF NOT EXISTS `item_pedido` (
   `quantidade` int NOT NULL,
   `produto_nome` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`item_pedido_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Despejando dados para a tabela `item_pedido`
 --
 
 INSERT INTO `item_pedido` (`item_pedido_id`, `produto_id`, `pedido_id`, `quantidade`, `produto_nome`) VALUES
-(1, 10, 5, 4, 'Torrada com Manteiga'),
-(2, 1, 4, 5, 'Café Espresso'),
+(13, 2, 18, 1, 'Cappuccino'),
+(12, 5, 17, 1, 'Chá Gelado'),
 (3, 2, 8, 5, 'Cappuccino'),
-(4, 13, 9, 1, 'Produto01'),
-(5, 13, 10, 20, 'Produto01'),
-(6, 13, 11, 40, 'Produto01'),
-(7, 13, 12, 5, 'Produto01'),
-(8, 16, 13, 1, 'Produto 01');
+(14, 9, 18, 5, 'Pão de Queijo'),
+(15, 2, 19, 1, 'Cappuccino'),
+(16, 8, 19, 1, 'Croissant'),
+(9, 6, 14, 2, 'Bolo de Chocolate'),
+(19, 5, 2, 1, 'Chá Gelado'),
+(20, 10, 2, 1, 'Torrada com Manteiga'),
+(23, 21, 3, 20, 'Bolacha de chocolate'),
+(24, 5, 3, 1, 'Chá Gelado');
 
 -- --------------------------------------------------------
 
@@ -139,17 +125,16 @@ CREATE TABLE IF NOT EXISTS `licencas` (
   `prazo_expiracao` enum('30','60','90','140') NOT NULL,
   `caminho_documento` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`licenca_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Despejando dados para a tabela `licencas`
 --
 
 INSERT INTO `licencas` (`licenca_id`, `nome_licenca`, `cnpj`, `orgao_responsavel`, `data_validade`, `prazo_expiracao`, `caminho_documento`) VALUES
-(1, 'Alvará de Funcionamento', '12.345.678/0001-90', 'Prefeitura', '2025-12-31', '90', NULL),
 (2, 'Licença Ambiental', '23.456.789/0001-80', 'Ibama', '2025-11-15', '60', NULL),
 (3, 'Registro Sanitário', '34.567.890/0001-70', 'Anvisa', '2025-10-10', '30', NULL),
-(8, 'Licença 01', '00.000.000/0000-00', 'Órgão 01', '2025-07-30', '30', NULL);
+(13, 'Alvará de Funcionaomento', '12.345.678/0001-90', 'Prefeitura', '2025-05-01', '30', '../uploads/licencas/68421a93a0778_Alvara-Regin.jpg');
 
 -- --------------------------------------------------------
 
@@ -164,22 +149,17 @@ CREATE TABLE IF NOT EXISTS `pedidos` (
   `data_pedido` date NOT NULL,
   `valor` decimal(10,2) NOT NULL,
   `mesa` varchar(50) DEFAULT NULL,
+  `status` enum('aberto','concluido') DEFAULT 'aberto',
   PRIMARY KEY (`pedido_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Despejando dados para a tabela `pedidos`
 --
 
-INSERT INTO `pedidos` (`pedido_id`, `cliente_id`, `data_pedido`, `valor`, `mesa`) VALUES
-(8, 20, '2025-06-01', 47.50, '01'),
-(5, 1, '2025-06-01', 18.00, '01'),
-(4, 11, '2025-06-01', 35.00, '03'),
-(9, 11, '2025-06-01', 10.00, '01'),
-(10, 4, '2025-06-01', 200.00, '03'),
-(11, 1, '2025-06-01', 400.00, '01'),
-(12, 7, '2025-06-01', 50.00, '02'),
-(13, 22, '2025-06-01', 30.00, '04');
+INSERT INTO `pedidos` (`pedido_id`, `cliente_id`, `data_pedido`, `valor`, `mesa`, `status`) VALUES
+(2, 12, '2025-06-05', 10.50, '01', 'aberto'),
+(3, 30, '2025-06-05', 96.00, '02', 'concluido');
 
 -- --------------------------------------------------------
 
